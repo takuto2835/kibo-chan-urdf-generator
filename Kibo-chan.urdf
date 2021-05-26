@@ -1,0 +1,517 @@
+<?xml version="1.0" ?>
+<robot name="Kibo-chan">
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="base_rotation_link">
+		<visual>
+			<geometry>
+				<box size="0.1 0.1 0.07"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="torso_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.2" radius="0.05"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<joint name="torso_joint" type="revolute">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 0.10" rpy="0 0 0"/>
+		<parent link="base_rotation_link"/>
+		<child link="torso_link"/>
+	</joint>
+	<joint name="base_rotation_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="base_rotation_link"/>
+	</joint>
+	<link name="neck_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="head_link">
+		<visual>
+			<geometry>
+				<box size="0.1 0.1 0.1"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0.05" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<joint name="neck_link_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0.12" rpy="0 0 0"/>
+		<parent link="torso_link"/>
+		<child link="neck_link"/>
+	</joint>
+	<joint name="neck_head_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="neck_link"/>
+		<child link="head_link"/>
+	</joint>
+	<link name="left_shoulder_link">
+		<visual>
+			<geometry>
+				<box size="0.025 0.015 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_shoulder_forward_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0.02 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_shoulder_up_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_upper_arm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.0075"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_elbow_link">
+		<visual>
+			<geometry>
+				<box size="0.035 0.035 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 1.57"/>
+		</visual>
+	</link>
+	<link name="left_wrist_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.025" rpy="1.57 0 0"/>
+		</visual>
+	</link>
+	<link name="left_lower_arm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.0075"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_up_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_lap_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.2" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_knee_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_shank_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.2" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_foot_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="left_leg_instep_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0.05 0 -0.02" rpy="0 1.57 0"/>
+		</visual>
+	</link>
+	<joint name="left_shoulder_joint" type="fixed">
+		<origin xyz="0 0.02 0.07" rpy="0 0 0"/>
+		<parent link="torso_link"/>
+		<child link="left_shoulder_link"/>
+	</joint>
+	<joint name="left_upper_arm_joint" type="revolute">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="left_shoulder_up_link"/>
+		<child link="left_upper_arm_link"/>
+	</joint>
+	<joint name="left_lower_arm_joint" type="revolute">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="left_elbow_link"/>
+		<child link="left_lower_arm_link"/>
+	</joint>
+	<joint name="left_shoulder_forward_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0.025 0" rpy="0 0 0"/>
+		<parent link="left_shoulder_link"/>
+		<child link="left_shoulder_forward_link"/>
+	</joint>
+	<joint name="left_shoulder_up_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0.04 -0.01" rpy="0 0 0"/>
+		<parent link="left_shoulder_forward_link"/>
+		<child link="left_shoulder_up_link"/>
+	</joint>
+	<joint name="left_elbow_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="left_upper_arm_link"/>
+		<child link="left_elbow_link"/>
+	</joint>
+	<joint name="left_wrist_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="left_lower_arm_link"/>
+		<child link="left_wrist_link"/>
+	</joint>
+	<joint name="left_leg_up_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0.05 -0.05" rpy="0 0 0"/>
+		<parent link="base_rotation_link"/>
+		<child link="left_leg_up_link"/>
+	</joint>
+	<joint name="left_leg_lap_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="left_leg_up_link"/>
+		<child link="left_leg_lap_link"/>
+	</joint>
+	<joint name="left_leg_knee_joint" type="fixed">
+		<origin xyz="0 0 -0.2" rpy="0 0 0"/>
+		<parent link="left_leg_lap_link"/>
+		<child link="left_leg_knee_link"/>
+	</joint>
+	<joint name="left_leg_shank_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="left_leg_knee_link"/>
+		<child link="left_leg_shank_link"/>
+	</joint>
+	<joint name="left_leg_foot_joint" type="fixed">
+		<origin xyz="0 0 -0.2" rpy="0 0 0"/>
+		<parent link="left_leg_shank_link"/>
+		<child link="left_leg_foot_link"/>
+	</joint>
+	<joint name="left_leg_instep_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="left_leg_foot_link"/>
+		<child link="left_leg_instep_link"/>
+	</joint>
+	<link name="right_shoulder_link">
+		<visual>
+			<geometry>
+				<box size="0.025 0.015 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_shoulder_forward_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 -0.02 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_shoulder_up_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_upper_arm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.0075"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_elbow_link">
+		<visual>
+			<geometry>
+				<box size="0.035 0.035 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 1.57"/>
+		</visual>
+	</link>
+	<link name="right_wrist_link">
+		<visual>
+			<geometry>
+				<box size="0.03 0.05 0.03"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.025" rpy="1.57 0 0"/>
+		</visual>
+	</link>
+	<link name="right_lower_arm_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.0075"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_up_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_lap_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.2" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_knee_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_shank_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.2" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0 0 -0.1" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_foot_link">
+		<visual>
+			<geometry>
+				<box size="0.05 0.05 0.05"/>
+			</geometry>
+			<material name="Black">
+				<color rgba="0.2 0.2 0.2 1.0"/>
+			</material>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+		</visual>
+	</link>
+	<link name="right_leg_instep_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.1" radius="0.015"/>
+			</geometry>
+			<material name="White">
+				<color rgba="1.0 1.0 1.0 1.0"/>
+			</material>
+			<origin xyz="0.05 0 -0.02" rpy="0 1.57 0"/>
+		</visual>
+	</link>
+	<joint name="right_shoulder_joint" type="fixed">
+		<origin xyz="0 -0.02 0.07" rpy="0 0 0"/>
+		<parent link="torso_link"/>
+		<child link="right_shoulder_link"/>
+	</joint>
+	<joint name="right_upper_arm_joint" type="revolute">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="right_shoulder_up_link"/>
+		<child link="right_upper_arm_link"/>
+	</joint>
+	<joint name="right_lower_arm_joint" type="revolute">
+		<axis xyz="0 0 1"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="right_elbow_link"/>
+		<child link="right_lower_arm_link"/>
+	</joint>
+	<joint name="right_shoulder_forward_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 -0.025 0" rpy="0 0 0"/>
+		<parent link="right_shoulder_link"/>
+		<child link="right_shoulder_forward_link"/>
+	</joint>
+	<joint name="right_shoulder_up_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 -0.04 -0.01" rpy="0 0 0"/>
+		<parent link="right_shoulder_forward_link"/>
+		<child link="right_shoulder_up_link"/>
+	</joint>
+	<joint name="right_elbow_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="right_upper_arm_link"/>
+		<child link="right_elbow_link"/>
+	</joint>
+	<joint name="right_wrist_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 0 -0.05" rpy="0 0 0"/>
+		<parent link="right_lower_arm_link"/>
+		<child link="right_wrist_link"/>
+	</joint>
+	<joint name="right_leg_up_joint" type="revolute">
+		<axis xyz="1 0 0"/>
+		<origin xyz="0 -0.05 -0.05" rpy="0 0 0"/>
+		<parent link="base_rotation_link"/>
+		<child link="right_leg_up_link"/>
+	</joint>
+	<joint name="right_leg_lap_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="right_leg_up_link"/>
+		<child link="right_leg_lap_link"/>
+	</joint>
+	<joint name="right_leg_knee_joint" type="fixed">
+		<origin xyz="0 0 -0.2" rpy="0 0 0"/>
+		<parent link="right_leg_lap_link"/>
+		<child link="right_leg_knee_link"/>
+	</joint>
+	<joint name="right_leg_shank_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="right_leg_knee_link"/>
+		<child link="right_leg_shank_link"/>
+	</joint>
+	<joint name="right_leg_foot_joint" type="fixed">
+		<origin xyz="0 0 -0.2" rpy="0 0 0"/>
+		<parent link="right_leg_shank_link"/>
+		<child link="right_leg_foot_link"/>
+	</joint>
+	<joint name="right_leg_instep_joint" type="revolute">
+		<axis xyz="0 1 0"/>
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="right_leg_foot_link"/>
+		<child link="right_leg_instep_link"/>
+	</joint>
+</robot>
